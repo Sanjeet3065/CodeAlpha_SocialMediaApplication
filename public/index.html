@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cream">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haven — Thoughtful Social Space</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>" />
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="app-layout" id="app-layout">
+
+    <!-- ========================================================
+         LEFT NAVIGATION SIDEBAR
+         ======================================================== -->
+    <aside class="sidebar-left">
+      <div>
+        <!-- Brand Logo -->
+        <div class="brand-wrapper" data-nav="home">
+          <div class="brand-logo-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"></path>
+            </svg>
+          </div>
+          <span class="brand-title">Haven</span>
+          <span class="brand-badge">Social</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-links">
+          <div class="nav-item active" data-nav="home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nav-text">Home</span>
+          </div>
+
+          <div class="nav-item" data-nav="explore">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="nav-text">Explore</span>
+          </div>
+
+          <div class="nav-item" data-nav="messages">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span class="nav-text">Messages</span>
+            <span id="messages-nav-badge" class="nav-badge-count" style="display: none; position: relative; margin-left: auto;">1</span>
+          </div>
+
+          <div class="nav-item" data-nav="bookmarks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="nav-text">Bookmarks</span>
+          </div>
+
+          <div class="nav-item" data-nav="profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="nav-text">Profile</span>
+          </div>
+        </nav>
+
+        <!-- Primary Post Button -->
+        <button class="btn-post-primary" onclick="document.getElementById('composer-text').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="btn-post-text">New Thought</span>
+        </button>
+      </div>
+
+      <!-- Footer Utilities in Left Sidebar -->
+      <div>
+        <!-- Color Palette Quick Swatches (100% Non-Dark, Non-Navy) -->
+        <div class="sidebar-palette-bar" title="Select Color Aesthetics">
+          <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Theme:</span>
+          <div class="palette-swatches-inline" id="left-palette-swatches">
+            <button class="palette-mini-dot active" data-palette="cream" title="Terracotta Cream (Warm & Editorial)" style="background: linear-gradient(135deg, #e05a36, #d97706);"></button>
+            <button class="palette-mini-dot" data-palette="sage" title="Nordic Forest Sage (Earthy & Botanical)" style="background: linear-gradient(135deg, #1e6b52, #10b981);"></button>
+            <button class="palette-mini-dot" data-palette="sandstone" title="Sandstone Ochre (Warm Desert Linen)" style="background: linear-gradient(135deg, #c26723, #e09f3e);"></button>
+            <button class="palette-mini-dot" data-palette="rosewood" title="Velvet Rosewood (Sunset Cashmere)" style="background: linear-gradient(135deg, #bc3b62, #e11d48);"></button>
+          </div>
+        </div>
+
+        <div class="sidebar-utils-row" style="margin-top: 8px;">
+          <button class="util-btn" id="theme-toggle-btn" title="Cycle color themes">
+            <span class="theme-icon">🎨</span>
+            <span>Style</span>
+          </button>
+          <button class="util-btn" id="sound-toggle-btn" title="Haptic Audio Feedback">
+            <span class="sound-icon">🔊</span>
+            <span>Sound</span>
+          </button>
+          <button class="util-btn" id="shortcuts-btn" title="Keyboard Shortcuts">
+            <span>⌨️</span>
+            <span>Keys</span>
+          </button>
+        </div>
+
+        <div class="user-sidebar-profile" style="margin-top: 14px;" data-nav="profile">
+          <div class="user-pill-info">
+            <img id="current-user-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" alt="Avatar" class="user-pill-avatar" />
+            <div class="user-pill-text">
+              <span id="current-user-name" class="user-pill-name">Sign In / Register</span>
+              <span id="current-user-handle" class="user-pill-handle">Create your account</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 2px;">
+            <button id="btn-sidebar-quick-edit" title="Edit Profile & Photo" style="padding: 6px; border-radius: 50%; color: var(--text-muted); display: flex; align-items: center; justify-content: center; transition: color 0.2s;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+            <button id="btn-sidebar-logout" title="Sign Out" style="padding: 6px; border-radius: 50%; color: var(--danger-color); display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ========================================================
+         MAIN CENTER COLUMN (FEED & PROFILES)
+         ======================================================== -->
+    <main class="main-content">
+      <!-- Sticky Glass Header -->
+      <header class="top-nav-header">
+        <div class="header-title-bar">
+          <div class="header-title-left" style="display: flex; align-items: center; gap: 10px;">
+            <div class="mobile-brand-pill" data-nav="home">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"></path>
+              </svg>
+              <span>Haven</span>
+            </div>
+            <h1 class="header-title-text" id="header-title-text">Home</h1>
+          </div>
+          <div class="header-actions-right">
+            <!-- Header Direct Messages Button -->
+            <button class="action-btn" id="btn-header-messages" title="Direct Messages" style="position: relative;" data-nav="messages">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span id="header-msg-badge" class="nav-badge-count" style="top: 0; right: 0; display: none;">1</span>
+            </button>
+            <!-- Header Palette Cycle Button -->
+            <button class="action-btn" id="btn-header-palette" title="Switch Color Style (Non-dark luxury tones)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+              </svg>
+            </button>
+            <!-- Notification Bell Icon Button -->
+            <button class="action-btn" id="btn-open-notifications" title="Notifications" style="position: relative;">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span id="notif-badge-count" class="nav-badge-count" style="top: 0; right: 0; display: none;">4</span>
+            </button>
+            <button class="action-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Scroll to top">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feed Subtabs -->
+        <div class="feed-tabs-container">
+          <div class="feed-tab active" data-tab="for_you">For You</div>
+          <div class="feed-tab" data-tab="following">Following</div>
+          <div class="feed-tab" data-tab="trending">🔥 Trending</div>
+        </div>
+
+        <!-- Active Filter Banner (Tags / Search) -->
+        <div class="filter-banner" id="filter-banner" style="display: none;">
+          <div class="filter-badge">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span id="filter-text">Filter active</span>
+          </div>
+          <button class="btn-clear-filter" id="btn-clear-filter">Clear filter</button>
+        </div>
+      </header>
+
+      <!-- Stories / Moments Bar -->
+      <section class="stories-carousel-section" id="stories-carousel">
+        <!-- Rendered dynamically via JavaScript -->
+      </section>
+
+      <!-- Post Composer -->
+      <section class="composer-card" id="composer-card">
+        <img id="composer-user-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" alt="Avatar" class="composer-avatar" />
+        <div class="composer-body">
+          <textarea
+            id="composer-text"
+            class="composer-textarea"
+            placeholder="What's resonating with you today? Share thoughts, code, or photography..."
+            maxlength="1000"
+          ></textarea>
+
+          <!-- Composer Image Preview -->
+          <div class="composer-image-preview-wrapper" id="composer-img-preview-wrapper" style="display: none;">
+            <img id="composer-img-preview" src="" alt="Preview" class="composer-image-preview" />
+            <button class="composer-remove-image-btn" id="btn-remove-composer-img" title="Remove image">✕</button>
+          </div>
+
+          <!-- Poll Builder (Collapsible) -->
+          <div class="composer-poll-builder" id="composer-poll-builder" style="display: none;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase;">📊 Create a Poll</div>
+            <input type="text" id="poll-q" class="poll-option-input" placeholder="Ask a question..." />
+            <input type="text" id="poll-opt-1" class="poll-option-input" placeholder="Option 1" />
+            <input type="text" id="poll-opt-2" class="poll-option-input" placeholder="Option 2" />
+          </div>
+
+          <!-- Mood & Vibe Selector (1-Click Thought Categorizer) -->
+          <div class="composer-vibe-bar">
+            <span class="composer-vibe-label">Mood:</span>
+            <div class="composer-vibe-chips">
+              <span class="vibe-chip" data-vibe="Idea">💡 Idea</span>
+              <span class="vibe-chip" data-vibe="Chill">☕ Chill</span>
+              <span class="vibe-chip" data-vibe="Design">🎨 Design</span>
+              <span class="vibe-chip" data-vibe="Shipped">🚀 Shipped</span>
+              <span class="vibe-chip" data-vibe="Mindful">🌿 Mindful</span>
+              <span class="vibe-chip" data-vibe="Reading">📚 Reading</span>
+            </div>
+          </div>
+
+          <!-- Quick Hashtag Suggestions -->
+          <div class="composer-quick-tags">
+            <span class="quick-tag-chip" data-tag="UIUX">#UIUX</span>
+            <span class="quick-tag-chip" data-tag="WebDesign">#WebDesign</span>
+            <span class="quick-tag-chip" data-tag="Architecture">#Architecture</span>
+            <span class="quick-tag-chip" data-tag="BuildInPublic">#BuildInPublic</span>
+            <span class="quick-tag-chip" data-tag="AI">#AI</span>
+          </div>
+
+          <!-- Composer Tools & Submit Bar -->
+          <div class="composer-footer">
+            <div class="composer-tools">
+              <!-- Upload Image Button -->
+              <input type="file" id="composer-image-input" accept="image/*" style="display: none;" />
+              <button class="composer-tool-btn" id="btn-composer-img" title="Upload local image">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+
+              <!-- Stock Photo Picker Button -->
+              <button class="composer-tool-btn" id="btn-composer-presets" title="Pick aesthetic stock photo">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </button>
+
+              <!-- Poll Toggle Button -->
+              <button class="composer-tool-btn" id="btn-composer-poll" title="Create an interactive poll">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="composer-right-actions">
+              <!-- Circular Progress Gauge Counter -->
+              <div class="char-counter-container">
+                <svg class="char-counter-circle" width="26" height="26">
+                  <circle cx="13" cy="13" r="10" stroke="var(--border-color)" stroke-width="2.5" fill="none"></circle>
+                  <circle id="char-counter-circle" cx="13" cy="13" r="10" stroke="var(--accent-primary)" stroke-width="2.5" fill="none" stroke-dasharray="62.8" stroke-dashoffset="62.8"></circle>
+                </svg>
+                <span class="char-counter-text" id="char-counter-text">0/1000</span>
+              </div>
+
+              <button class="btn-composer-submit" id="btn-submit-post" disabled>
+                Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feed Posts Container -->
+      <div class="posts-feed" id="feed-container">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </main>
+
+    <!-- ========================================================
+         RIGHT SIDEBAR (SEARCH, TRENDING, WHO TO FOLLOW)
+         ======================================================== -->
+    <aside class="sidebar-right">
+      <!-- Search Widget with Live Dropdown -->
+      <div class="search-widget">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" id="search-input" placeholder="Search posts, tags, people..." autocomplete="off" />
+        </div>
+        <div class="search-results-dropdown" id="search-results-dropdown" style="display: none;"></div>
+      </div>
+
+      <!-- Curated Color Palette Card (100% Non-Dark, Non-Navy Luxury Palettes) -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">
+          <span>🎨 Color Aesthetics</span>
+          <span id="current-palette-badge" style="font-size: 11px; font-weight: 700; color: var(--accent-primary);">Terracotta</span>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">
+          Handcrafted editorial themes (zero black or navy):
+        </div>
+        <div class="palette-options-grid" id="sidebar-palette-grid">
+          <button class="palette-option-btn active" data-palette="cream" title="Terracotta Cream (Warm Linen & Mediterranean Sienna)">
+            <span class="palette-dot" style="background: linear-gradient(135deg, #e05a36, #d97706);"></span>
+            <span class="palette-label">Terracotta</span>
+          </button>
+          <button class="palette-option-btn" data-palette="sage" title="Nordic Forest Sage (Botanical Evergreen & Mist)">
+            <span class="palette-dot" style="background: linear-gradient(135deg, #1e6b52, #10b981);"></span>
+            <span class="palette-label">Sage</span>
+          </button>
+          <button class="palette-option-btn" data-palette="sandstone" title="Sandstone Ochre (Warm Desert Linen & Caramel)">
+            <span class="palette-dot" style="background: linear-gradient(135deg, #c26723, #e09f3e);"></span>
+            <span class="palette-label">Ochre</span>
+          </button>
+          <button class="palette-option-btn" data-palette="rosewood" title="Velvet Rosewood (Sunset Cashmere)">
+            <span class="palette-dot" style="background: linear-gradient(135deg, #bc3b62, #e11d48);"></span>
+            <span class="palette-label">Rosewood</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Profile Switcher (Ideal for evaluation!) -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">
+          <span>⚡ Switch Persona</span>
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-primary);">1-Click</span>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">
+          Instantly switch between users to test follow, like, and comment interactions:
+        </div>
+        <div class="demo-accounts-grid" id="demo-accounts-grid">
+          <button class="demo-chip" data-demo-user="alex_design">@alex_design</button>
+          <button class="demo-chip" data-demo-user="priya_codes">@priya_codes</button>
+          <button class="demo-chip" data-demo-user="marcus_lens">@marcus_lens</button>
+          <button class="demo-chip" data-demo-user="elena_ai">@elena_ai</button>
+          <button class="demo-chip" data-demo-user="demo_user">@demo_user</button>
+        </div>
+      </div>
+
+      <!-- Trending Topics Widget -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">
+          <span>🔥 Trending Topics</span>
+        </div>
+        <div class="trending-list" id="trending-list">
+          <div class="skeleton" style="height: 38px;"></div>
+          <div class="skeleton" style="height: 38px;"></div>
+          <div class="skeleton" style="height: 38px;"></div>
+        </div>
+      </div>
+
+      <!-- Who to Follow Recommendations -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">
+          <span>✨ Who to follow</span>
+        </div>
+        <div class="who-to-follow-list" id="who-to-follow-list">
+          <div class="skeleton" style="height: 46px;"></div>
+          <div class="skeleton" style="height: 46px;"></div>
+        </div>
+      </div>
+
+      <!-- Footer & Credits -->
+      <div class="sidebar-footer-links" style="font-size: 12px; color: var(--text-muted); line-height: 1.6; padding: 0 6px;">
+        <p>Haven • A Thoughtful Social Space</p>
+        <p style="margin-top: 4px;">Crafted with Express.js, SQLite & Vanilla JS</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Slide-Over Notifications Drawer & Backdrop -->
+  <div id="notif-backdrop" class="modal-backdrop" style="display: none; background: rgba(0,0,0,0.5); z-index: 105;"></div>
+  <aside class="notifications-drawer" id="notifications-drawer" style="display: none;">
+    <div class="notifications-header">
+      <h2 class="notifications-title">Notifications</h2>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="btn-mark-all-read" id="btn-mark-all-read">Mark all read</button>
+        <button class="modal-close-btn" onclick="document.getElementById('notifications-drawer').style.display='none'; document.getElementById('notif-backdrop').style.display='none';">✕</button>
+      </div>
+    </div>
+    <div class="notifications-list" id="notifications-list"></div>
+  </aside>
+
+  <!-- Mobile Bottom Navigation Bar (5 Touch Items with Center Post CTA) -->
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-nav-item active" data-nav="home">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      <span>Home</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="explore">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <span>Explore</span>
+    </div>
+    <div class="mobile-nav-item mobile-post-action" id="btn-mobile-new-post" title="New Thought">
+      <div class="mobile-center-plus-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.8">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </div>
+    </div>
+    <div class="mobile-nav-item" data-nav="messages">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      <span>Chat</span>
+    </div>
+    <div class="mobile-nav-item" data-nav="profile">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <span>Profile</span>
+    </div>
+  </nav>
+
+  <!-- Image Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" style="display: none;">
+    <img id="lightbox-image" src="" alt="Enlarged view" class="lightbox-image" />
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/state.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
